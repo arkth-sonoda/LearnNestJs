@@ -7,7 +7,7 @@ import { ItemStatus } from './item-status.enum';
 import { Item } from '../entities/item.entity';
 import { CreateItemDto } from './dto/create-item.dto';
 import { ItemRepository } from './item.repository';
-import { User } from 'src/entities/user.entity';
+import { User } from '../entities/user.entity';
 
 @Injectable()
 export class ItemsService {
@@ -19,11 +19,11 @@ export class ItemsService {
   }
 
   async findById(id: string): Promise<Item> {
-    const found = this.itemRepository.findOne(id);
+    const found = await this.itemRepository.findOne(id);
     if (!found) {
       throw new NotFoundException();
     }
-    return await found;
+    return found;
   }
 
   async create(createItemDto: CreateItemDto, user: User): Promise<Item> {
