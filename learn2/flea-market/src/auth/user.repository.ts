@@ -3,6 +3,7 @@ import { EntityRepository, Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import * as bcrypt from 'bcrypt';
 
+// test
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
   async createUser(createUserDto: CreateUserDto): Promise<User> {
